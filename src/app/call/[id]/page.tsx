@@ -176,16 +176,16 @@ const MeetingRoom = ({ id, sendMessage } : { id: string, sendMessage: (inputMess
 				</div>
 				<div className='fixed bottom-0 flex w-full items-center justify-center gap-5'>
 					<CallControls onLeave={handleLeave} />
-					<Button className="msg rounded-full" onClick={toggleChat}>
+					<Button className="msg p-2 rounded-full" onClick={toggleChat}>
 						<MessageCircle />
 					</Button>
 				</div>
 			</div>
 		</section>
 		{isOpen && (
-			<div className="absolute flex items-center justify-center w-full h-full">
+			<div className="absolute backdrop-blur-md flex items-center justify-center w-full h-full">
 				<Card 
-				className="mb-2 w-80 shadow-lg border-none bg-gradient-to-r text-white to-indigo-500 max-[640px]:flex max-[640px]:flex-col max-[640px]:h-full max-[640px]:justify-between max-[640px]:w-full"
+				className="min-[641px]:mb-2 max-[640px]:rounded-none w-80 shadow-lg border-none bg-gradient-to-r text-white to-indigo-500 max-[640px]:flex max-[640px]:flex-col max-[640px]:h-full max-[640px]:justify-between max-[640px]:w-full"
 				>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium truncate">Chat with others</CardTitle>
