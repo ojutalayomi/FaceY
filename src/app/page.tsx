@@ -7,13 +7,13 @@ import UpcomingMeeting from "@/app/modals/UpcomingMeeting";
 import CreateLink from "@/app/modals/CreateLink";
 import JoinMeeting from "@/app/modals/JoinMeeting";
 import { Link, UserPlus, Video } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
 
 export default function Dashboard() {
-    const [startInstantMeeting, setStartInstantMeeting] =
-        useState<boolean>(false);
+    const { user, isLoaded } = useUser();
+    const [startInstantMeeting, setStartInstantMeeting] = useState<boolean>(false);
     const [joinMeeting, setJoinMeeting] = useState<boolean>(false);
-    const [showUpcomingMeetings, setShowUpcomingMeetings] =
-        useState<boolean>(false);
+    const [showUpcomingMeetings, setShowUpcomingMeetings] = useState<boolean>(false);
     const [showCreateLink, setShowCreateLink] = useState<boolean>(false);
 
     return (
@@ -22,6 +22,7 @@ export default function Dashboard() {
             <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
                 <div className="w-full max-w-md">
                 <h1 className="text-4xl font-bold mb-2 text-center">FaceY</h1>
+                    <div className="text-5xl font-bold text-center">Hi, {user?.fullName ? user.fullName : user?.username?.toUpperCase()}</div>
                     <p 
                         className="cursor-pointer text-sm text-center mb-8 text-gray-400"
                         onClick={() => setShowUpcomingMeetings(true)}
