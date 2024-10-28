@@ -86,7 +86,7 @@ body {
 }
 @media (max-width: 450px) {
   .msg{
-    bottom: 0;
+    top: 0;
     right: 0;
     margin: 15px;
     padding: 0.5rem;

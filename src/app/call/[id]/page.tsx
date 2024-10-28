@@ -54,7 +54,7 @@ export default function CallPage() {
 		if(socket && call){ 
 			call.join();
 			socket.emit('register', id);
-			socket.emit('getMesages', id);
+			socket.emit('getMesages', { userId: user?.id, id: id });
 			setConfirmJoin(true)
 		} else {
 			alert("Network connection problem.")
@@ -256,10 +256,12 @@ const MeetingRoom = ({ id, sendMessage } : { id: string, sendMessage: (inputMess
 												}`}
 												title={time}
 											>
-												{message.sender?.username === user?.username && 
-													renderStatusIcon(message.status as string)
+												{(message.sender?.username === user?.username) &&
+													<>
+														{renderStatusIcon(message.status as string)}
+														<b> • </b>
+													</>
 												}
-												<i> • </i>
 												{time}
 											</abbr>
 										</span>
